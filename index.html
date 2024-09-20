@@ -4,22 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <canvas id="draw" width="500" height="500"></canvas>
     <style>
+        :root {
+            --base: #ff0000;
+            --spacing: 10px;
+        }
         html, body {
             height: 100%; /* Ensure the body takes full height */
             margin: 0;
             display: flex; /* Use flexbox for centering */
             align-items: center; /* Center vertically */
             justify-content: center; /* Center horizontally */
+            position: relative; /* Needed for absolute positioning of controls */
         }
         canvas {
             border: 2px solid black; /* Add a border for visibility */
         }
+        .controls {
+            position: absolute; /* Position controls absolutely */
+            top: 200px; /* Position from the top */
+            left: calc(50% + 300px); /* Position from the right (adjust as needed) */
+            display: flex; /* Use flexbox for vertical stacking */
+            flex-direction: column; /* Stack items vertically */
+        }
     </style>
-    
+</head>
+<body>
+    <canvas id="draw" width="500" height="500"></canvas>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+        <label for="base">Color:</label>
+        <input type="color" name="base" value="#BADA55">
+
+        <button id="reset">Reset</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
